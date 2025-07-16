@@ -60,9 +60,19 @@ Logistic Regression fue el modelo más robusto para identificar legendarios (rec
 Pruebas con Pokémon legendarios y no legendarios de la 8va generación (no vistos por el modelo) mostraron que el modelo **clasifica correctamente ambos casos**, demostrando capacidad de generalización.
 
 ```python
-zacian = pd.DataFrame([{
-    'HP': 92, 'Attack': 130, 'Defense': 115, 'Sp. Atk': 80, 'Sp. Def': 115, 'Speed': 138,
-    'Generation': 8, 'HasTwoTypes': 0, 'Type 1': 'Fairy', 'Type 2': ''
+nuevo_pokemon = pd.DataFrame([{
+    'HP': 70,
+    'Attack': 75,
+    'Defense': 115,
+    'Sp. Atk': 95,
+    'Sp. Def': 130,
+    'Speed': 85,
+    'Generation': 7,
+    'HasTwoTypes': 1,
+    'Type 1': 'Water',
+    'Type 2': 'Fairy'
 }])
-pred = pipeline_logreg.predict(zacian)
-print(pred)  # Esperado: [1] (Legendario)
+
+prediccion = pipeline_logreg.predict(nuevo_pokemon)
+
+print(f"Predicción: {'Legendario' if prediccion[0]==1 else 'No legendario'}")
